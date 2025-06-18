@@ -1,0 +1,1954 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S2G Esports Topluluğu | Türkiye'nin Premium Esports Forumu</title>
+    <meta name="description" content="S2G Esports'un resmi olmayan premium fan topluluğu platformu. Canlı tartışmalar, video analizler ve özel içerikler.">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="S2G Esports Topluluğu | Türkiye'nin Premium Esports Forumu">
+    <meta property="og:description" content="S2G Esports'un premium fan topluluğu platformu">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://localhost/s2gforum">
+    <meta property="og:image" content="assets/social-preview.jpg">
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="manifest" href="assets/site.webmanifest">
+    
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oxanium:wght@600;700&display=swap">
+    
+    <!-- CSS -->
+    <style>
+        :root {
+            --primary: #9147FF;
+            --primary-hover: #A15EFF;
+            --primary-dark: #7B3AED;
+            --secondary: #00D1B2;
+            --accent: #FF4D4D;
+            
+            --bg-dark: #0A0A0A;
+            --bg-darker: #070707;
+            --bg-light: #1A1A1B;
+            --bg-lighter: #2D2D2F;
+            --bg-lightest: #3A3A3C;
+            
+            --text-primary: #F5F5F5;
+            --text-secondary: #D7DADC;
+            --text-muted: #818384;
+            
+            --border-color: #343536;
+            --border-light: #454547;
+            
+            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            --elevation-1: 0 1px 3px rgba(0, 0, 0, 0.12);
+            --elevation-2: 0 4px 6px rgba(0, 0, 0, 0.15);
+            
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+            
+            --header-height: 64px;
+            --sidebar-width: 312px;
+            --content-width: 1080px;
+        }
+        
+        [data-theme="light"] {
+            --bg-dark: #F5F7FA;
+            --bg-darker: #FFFFFF;
+            --bg-light: #FFFFFF;
+            --bg-lighter: #F6F7F8;
+            --bg-lightest: #EAEDF0;
+            
+            --text-primary: #1A1A1B;
+            --text-secondary: #4A4A4A;
+            --text-muted: #787C7E;
+            
+            --border-color: #EDEFF1;
+            --border-light: #DFE1E3;
+            
+            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --elevation-1: 0 1px 3px rgba(0, 0, 0, 0.05);
+            --elevation-2: 0 4px 6px rgba(0, 0, 0, 0.08);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: calc(var(--header-height) + 16px);
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Oxanium', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.15s ease;
+        }
+        
+        a:hover {
+            color: var(--primary-hover);
+        }
+        
+        img, video {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--radius-md);
+        }
+        
+        /* Layout */
+        .app-container {
+            display: grid;
+            grid-template-rows: var(--header-height) 1fr auto;
+            min-height: 100vh;
+        }
+        
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            height: var(--header-height);
+            background-color: var(--bg-darker);
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: var(--elevation-1);
+        }
+        
+        .header-container {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            height: 100%;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-img {
+            height: 36px;
+            width: auto;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-title {
+            font-family: 'Oxanium', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1;
+            margin-bottom: 2px;
+        }
+        
+        .logo-subtitle {
+            font-size: 0.6875rem;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        
+        /* Navigation */
+        .nav-search {
+            flex: 1;
+            max-width: 600px;
+            position: relative;
+        }
+        
+        .search-container {
+            position: relative;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 10px 16px 10px 40px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-light);
+            color: var(--text-primary);
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(145, 71, 255, 0.2);
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+        
+        /* User Controls */
+        .user-controls {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.25rem;
+            cursor: pointer;
+            transition: color 0.15s ease;
+        }
+        
+        .theme-toggle:hover {
+            color: var(--text-primary);
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 16px;
+            border-radius: var(--radius-md);
+            font-weight: 500;
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+            gap: 8px;
+            border: 1px solid transparent;
+            cursor: pointer;
+        }
+        
+        .btn-sm {
+            padding: 6px 12px;
+            font-size: 0.8125rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-1px);
+            box-shadow: var(--elevation-2);
+        }
+        
+        .btn-outline {
+            border-color: var(--border-color);
+            color: var(--text-primary);
+            background-color: transparent;
+        }
+        
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background-color: rgba(145, 71, 255, 0.05);
+        }
+        
+        .btn-icon {
+            width: 36px;
+            height: 36px;
+            padding: 0;
+            border-radius: 50%;
+        }
+        
+        /* Main Content */
+        main {
+            max-width: var(--content-width);
+            margin: 24px auto;
+            width: 100%;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) var(--sidebar-width);
+            gap: 24px;
+        }
+        
+        @media (max-width: 1024px) {
+            main {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Post Feed */
+        .feed-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+        
+        .feed-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+        
+        .sort-options {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .sort-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 0.8125rem;
+            font-weight: 500;
+            padding: 6px 12px;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+        
+        .sort-btn:hover, .sort-btn.active {
+            background-color: var(--bg-lighter);
+            color: var(--text-primary);
+        }
+        
+        .sort-btn.active {
+            color: var(--primary);
+        }
+        
+        .post-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        
+        /* Post Card */
+        .post-card {
+            background-color: var(--bg-light);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            display: flex;
+            transition: all 0.2s ease;
+            box-shadow: var(--elevation-1);
+        }
+        
+        .post-card:hover {
+            border-color: var(--border-light);
+            box-shadow: var(--card-shadow);
+            transform: translateY(-2px);
+        }
+        
+        .post-card.featured {
+            border-left: 4px solid var(--primary);
+        }
+        
+        .vote-container {
+            min-width: 40px;
+            padding: 8px 4px;
+            background-color: var(--bg-lighter);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .vote-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 1rem;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-sm);
+            transition: all 0.15s ease;
+        }
+        
+        .vote-btn:hover {
+            background-color: var(--bg-lightest);
+            color: var(--primary);
+        }
+        
+        .vote-count {
+            font-weight: 600;
+            font-size: 0.875rem;
+            color: var(--text-primary);
+        }
+        
+        .post-content {
+            padding: 12px 16px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .post-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+        
+        .community-badge {
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+        
+        .post-time {
+            font-size: 0.6875rem;
+        }
+        
+        .post-author {
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+        
+        .post-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            line-height: 1.4;
+            color: var(--text-primary);
+        }
+        
+        .post-text {
+            font-size: 0.9375rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        
+        .post-media {
+            margin-top: 8px;
+        }
+        
+        .post-image {
+            max-height: 512px;
+            object-fit: cover;
+            width: 100%;
+            cursor: pointer;
+        }
+        
+        .post-video {
+            width: 100%;
+            background-color: var(--bg-darker);
+            aspect-ratio: 16/9;
+        }
+        
+        .post-footer {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-top: 8px;
+            font-size: 0.8125rem;
+        }
+        
+        .post-action {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.15s ease;
+            padding: 4px 8px;
+            border-radius: var(--radius-sm);
+        }
+        
+        .post-action:hover {
+            background-color: var(--bg-lighter);
+            color: var(--text-primary);
+        }
+        
+        .post-action i {
+            font-size: 0.9375rem;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            position: sticky;
+            top: calc(var(--header-height) + 24px);
+            height: fit-content;
+        }
+        
+        @media (max-width: 1024px) {
+            .sidebar {
+                position: static;
+                grid-row: 1;
+            }
+        }
+        
+        .sidebar-card {
+            background-color: var(--bg-light);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            box-shadow: var(--elevation-1);
+        }
+        
+        .sidebar-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 16px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .sidebar-header i {
+            font-size: 0.875rem;
+        }
+        
+        .sidebar-content {
+            padding: 16px;
+        }
+        
+        /* Community Info */
+        .community-info {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        
+        .community-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .community-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: var(--bg-lighter);
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        
+        .community-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .community-meta {
+            flex: 1;
+        }
+        
+        .community-name {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 2px;
+        }
+        
+        .community-members {
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+        }
+        
+        .community-description {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        
+        .community-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 8px;
+            background-color: var(--bg-lighter);
+            border-radius: var(--radius-sm);
+        }
+        
+        .stat-value {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--text-primary);
+        }
+        
+        .stat-label {
+            font-size: 0.6875rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Rules List */
+        .rules-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .rule-item {
+            display: flex;
+            gap: 8px;
+            font-size: 0.8125rem;
+            line-height: 1.4;
+        }
+        
+        .rule-number {
+            color: var(--primary);
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        
+        /* Events List */
+        .events-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .event-item {
+            display: flex;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .event-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        
+        .event-date {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 40px;
+        }
+        
+        .event-day {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.125rem;
+            line-height: 1;
+        }
+        
+        .event-month {
+            font-size: 0.6875rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .event-details {
+            flex: 1;
+        }
+        
+        .event-title {
+            font-weight: 500;
+            font-size: 0.875rem;
+            margin-bottom: 4px;
+        }
+        
+        .event-time {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+        
+        /* Trending Players */
+        .players-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .player-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px;
+            border-radius: var(--radius-sm);
+            transition: background-color 0.15s ease;
+        }
+        
+        .player-item:hover {
+            background-color: var(--bg-lighter);
+        }
+        
+        .player-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: var(--bg-lighter);
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        
+        .player-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .player-info {
+            flex: 1;
+            overflow: hidden;
+        }
+        
+        .player-name {
+            font-weight: 500;
+            font-size: 0.875rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .player-role {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+        
+        .player-stats {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .stat-pill {
+            font-size: 0.6875rem;
+            padding: 2px 6px;
+            border-radius: 20px;
+            background-color: var(--bg-lighter);
+            color: var(--text-primary);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--bg-darker);
+            border-top: 1px solid var(--border-color);
+            padding: 32px 0;
+            margin-top: 48px;
+        }
+        
+        .footer-container {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 32px;
+        }
+        
+        .footer-column {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .footer-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+        
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .footer-link a {
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+            transition: color 0.15s ease;
+        }
+        
+        .footer-link a:hover {
+            color: var(--primary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 8px;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: var(--bg-light);
+            color: var(--text-primary);
+            transition: all 0.15s ease;
+        }
+        
+        .social-link:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .copyright {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding-top: 24px;
+            margin-top: 24px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.75rem;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0 16px;
+                gap: 12px;
+            }
+            
+            .logo-title {
+                font-size: 1.125rem;
+            }
+            
+            .nav-search {
+                order: 3;
+                width: 100%;
+                max-width: 100%;
+                margin-top: 8px;
+            }
+            
+            .user-controls {
+                margin-left: auto;
+            }
+            
+            main {
+                padding: 0 16px;
+            }
+            
+            .feed-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+            
+            .sort-options {
+                width: 100%;
+                overflow-x: auto;
+                padding-bottom: 8px;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+        
+        /* Utility Classes */
+        .hidden {
+            display: none !important;
+        }
+        
+        .text-primary {
+            color: var(--primary);
+        }
+        
+        .text-muted {
+            color: var(--text-muted);
+        }
+        
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal {
+            background-color: var(--bg-light);
+            border-radius: var(--radius-md);
+            width: 100%;
+            max-width: 480px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: var(--card-shadow);
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+        
+        .modal-overlay.active .modal {
+            transform: translateY(0);
+        }
+        
+        .modal-header {
+            padding: 16px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .modal-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+        }
+        
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.25rem;
+            cursor: pointer;
+            transition: color 0.15s ease;
+        }
+        
+        .modal-close:hover {
+            color: var(--text-primary);
+        }
+        
+        .modal-body {
+            padding: 16px;
+        }
+        
+        .form-group {
+            margin-bottom: 16px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-lighter);
+            color: var(--text-primary);
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(145, 71, 255, 0.2);
+        }
+        
+        .form-text {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+        
+        .modal-footer {
+            padding: 16px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+        }
+        
+        /* Create Post Button */
+        .create-post-btn {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 12px rgba(145, 71, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            z-index: 1000;
+        }
+        
+        .create-post-btn:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(145, 71, 255, 0.4);
+        }
+        
+        /* Empty State */
+        .empty-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 48px 24px;
+            text-align: center;
+            background-color: var(--bg-light);
+            border-radius: var(--radius-md);
+            border: 1px dashed var(--border-color);
+        }
+        
+        .empty-icon {
+            font-size: 3rem;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+        
+        .empty-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .empty-text {
+            color: var(--text-muted);
+            max-width: 400px;
+            margin-bottom: 16px;
+        }
+        
+        /* User Dropdown */
+        .user-dropdown {
+            position: relative;
+        }
+        
+        .user-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: var(--bg-lighter);
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .user-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background-color: var(--bg-light);
+            border-radius: var(--radius-md);
+            box-shadow: var(--card-shadow);
+            min-width: 200px;
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.2s ease;
+        }
+        
+        .dropdown-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-item {
+            padding: 10px 16px;
+            font-size: 0.875rem;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: background-color 0.15s ease;
+        }
+        
+        .dropdown-item:hover {
+            background-color: var(--bg-lighter);
+        }
+        
+        .dropdown-divider {
+            height: 1px;
+            background-color: var(--border-color);
+            margin: 4px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header>
+            <div class="header-container">
+                <a href="index.html" class="logo">
+                    <img src="assets/logo-img.png" alt="S2G Logo" class="logo-img">
+                    <div class="logo-text">
+                        <div class="logo-title">S2G TOPLULUK</div>
+                        <div class="logo-subtitle">FAN PLATFORMU</div>
+                    </div>
+                </a>
+                
+                <div class="nav-search">
+                    <div class="search-container">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" class="search-input" placeholder="S2G hakkında ara...">
+                    </div>
+                </div>
+                
+                <div class="user-controls">
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    
+                    <div class="auth-buttons" id="authButtons">
+                        <a href="#" class="btn btn-outline" id="loginBtn">Giriş Yap</a>
+                        <a href="#" class="btn btn-primary" id="registerBtn">Kayıt Ol</a>
+                    </div>
+                    
+                    <div class="user-dropdown hidden" id="userDropdown">
+                        <div class="user-avatar" id="userAvatar">
+                            <img src="assets/user-avatar.png" alt="Kullanıcı">
+                        </div>
+                        <div class="dropdown-menu" id="dropdownMenu">
+                            <div class="dropdown-item">
+                                <i class="fas fa-user"></i> Profilim
+                            </div>
+                            <div class="dropdown-item">
+                                <i class="fas fa-cog"></i> Ayarlar
+                            </div>
+                            <div class="dropdown-divider"></div>
+                            <div class="dropdown-item" id="logoutBtn">
+                                <i class="fas fa-sign-out-alt"></i> Çıkış Yap
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Main Content -->
+        <main>
+            <!-- Feed Content -->
+            <div class="feed-content">
+                <div class="feed-header">
+                    <h2 class="feed-title">S2G Topluluğu</h2>
+                    <div class="sort-options">
+                        <button class="sort-btn active"><i class="fas fa-fire"></i> Popüler</button>
+                        <button class="sort-btn"><i class="fas fa-clock"></i> Son</button>
+                        <button class="sort-btn"><i class="fas fa-trophy"></i> Öne Çıkan</button>
+                        <button class="sort-btn"><i class="fas fa-arrow-up"></i> Yükselen</button>
+                    </div>
+                </div>
+                
+                <div class="post-list" id="postList">
+                    <!-- Sample Post -->
+                    <div class="post-card animate-fade">
+                        <div class="vote-container">
+                            <button class="vote-btn"><i class="fas fa-arrow-up"></i></button>
+                            <div class="vote-count">42</div>
+                            <button class="vote-btn"><i class="fas fa-arrow-down"></i></button>
+                        </div>
+                        <div class="post-content">
+                            <div class="post-header">
+                                <span class="community-badge">r/S2GEsports</span>
+                                <span>•</span>
+                                <span class="post-author">u/S2G_Fan</span>
+                                <span>•</span>
+                                <span class="post-time">2 saat önce</span>
+                            </div>
+                            <h3 class="post-title">S2G Yeni Sezona Hazır!</h3>
+                            <div class="post-media">
+                                <img src="assets/post-image1.jpg" alt="Gönderi resmi" class="post-image">
+                            </div>
+                            <p class="post-text">Takımımız yeni sezon için antrenmanlara başladı. Büyük turnuvalara hazırlanıyoruz!</p>
+                            <div class="post-footer">
+                                <div class="post-action">
+                                    <i class="far fa-comment"></i>
+                                    <span>15 Yorum</span>
+                                </div>
+                                <div class="post-action">
+                                    <i class="fas fa-share"></i>
+                                    <span>Paylaş</span>
+                                </div>
+                                <div class="post-action">
+                                    <i class="far fa-bookmark"></i>
+                                    <span>Kaydet</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Community Info -->
+                <div class="sidebar-card">
+                    <div class="sidebar-header">
+                        <i class="fas fa-info-circle"></i>
+                        TOPLULUK BİLGİSİ
+                    </div>
+                    <div class="sidebar-content">
+                        <div class="community-info">
+                            <div class="community-header">
+                                <div class="community-icon">
+                                    <img src="assets/community-icon.png" alt="S2G Logo">
+                                </div>
+                                <div class="community-meta">
+                                    <div class="community-name">r/S2GEsports</div>
+                                    <div class="community-members">24.7k üye • 356 çevrimiçi</div>
+                                </div>
+                            </div>
+                            
+                            <div class="community-description">
+                                S2G Esports'un resmi olmayan Türkçe fan topluluğu. Takım haberleri, maç analizleri, oyuncu performansları ve tüm S2G içerikleri için bir araya geldiğimiz platform.
+                            </div>
+                            
+                            <div class="community-stats">
+                                <div class="stat-item">
+                                    <div class="stat-value">24.7k</div>
+                                    <div class="stat-label">Üye</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">1.2m</div>
+                                    <div class="stat-label">Aylık Görüntüleme</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">2019</div>
+                                    <div class="stat-label">Kuruluş</div>
+                                </div>
+                            </div>
+                            
+                            <button class="btn btn-primary" id="joinCommunityBtn">
+                                <i class="fas fa-plus"></i> Topluluğa Katıl
+                            </button>
+                            
+                            <button class="btn btn-outline" id="createPostBtn">
+                                <i class="fas fa-pen"></i> Gönderi Oluştur
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Community Rules -->
+                <div class="sidebar-card">
+                    <div class="sidebar-header">
+                        <i class="fas fa-gavel"></i>
+                        TOPLULUK KURALLARI
+                    </div>
+                    <div class="sidebar-content">
+                        <ul class="rules-list">
+                            <li class="rule-item">
+                                <span class="rule-number">1.</span>
+                                <span>Saygılı ve olumlu bir dil kullanın. Nefret söylemi kesinlikle yasaktır.</span>
+                            </li>
+                            <li class="rule-item">
+                                <span class="rule-number">2.</span>
+                                <span>Spam, reklam ve gereksiz paylaşımlar yapmayın.</span>
+                            </li>
+                            <li class="rule-item">
+                                <span class="rule-number">3.</span>
+                                <span>Resmi olmayan bilgileri kaynak belirtmeden paylaşmayın.</span>
+                            </li>
+                            <li class="rule-item">
+                                <span class="rule-number">4.</span>
+                                <span>Oyunculara ve takımlara karşı saygısız davranışlar yasaktır.</span>
+                            </li>
+                            <li class="rule-item">
+                                <span class="rule-number">5.</span>
+                                <span>NSFW (18+) içerik paylaşmayın.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Upcoming Events -->
+                <div class="sidebar-card">
+                    <div class="sidebar-header">
+                        <i class="fas fa-calendar-alt"></i>
+                        YAKLAŞAN ETKİNLİKLER
+                    </div>
+                    <div class="sidebar-content">
+                        <div class="events-list">
+                            <div class="event-item">
+                                <div class="event-date">
+                                    <div class="event-day">15</div>
+                                    <div class="event-month">Tem</div>
+                                </div>
+                                <div class="event-details">
+                                    <div class="event-title">VALORANT Champions Tour</div>
+                                    <div class="event-time">20:00 • Twitch'te canlı</div>
+                                </div>
+                            </div>
+                            
+                            <div class="event-item">
+                                <div class="event-date">
+                                    <div class="event-day">22</div>
+                                    <div class="event-month">Tem</div>
+                                </div>
+                                <div class="event-details">
+                                    <div class="event-title">S2G Fan Buluşması</div>
+                                    <div class="event-time">İstanbul • Esports Arena</div>
+                                </div>
+                            </div>
+                            
+                            <div class="event-item">
+                                <div class="event-date">
+                                    <div class="event-day">30</div>
+                                    <div class="event-month">Tem</div>
+                                </div>
+                                <div class="event-details">
+                                    <div class="event-title">Yayıncılar vs Takım</div>
+                                    <div class="event-time">21:00 • Özel maç</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Trending Players -->
+                <div class="sidebar-card">
+                    <div class="sidebar-header">
+                        <i class="fas fa-chart-line"></i>
+                        TREND OYUNCULAR
+                    </div>
+                    <div class="sidebar-content">
+                        <div class="players-list">
+                            <a href="#" class="player-item">
+                                <div class="player-avatar">
+                                    <img src="assets/player-avatar1.png" alt="Oyuncu">
+                                </div>
+                                <div class="player-info">
+                                    <div class="player-name">S2G_Player1</div>
+                                    <div class="player-role">IGL • Rifler</div>
+                                </div>
+                                <div class="player-stats">
+                                    <span class="stat-pill">+124</span>
+                                </div>
+                            </a>
+                            
+                            <a href="#" class="player-item">
+                                <div class="player-avatar">
+                                    <img src="assets/player-avatar2.png" alt="Oyuncu">
+                                </div>
+                                <div class="player-info">
+                                    <div class="player-name">S2G_Awper</div>
+                                    <div class="player-role">Awper</div>
+                                </div>
+                                <div class="player-stats">
+                                    <span class="stat-pill">+89</span>
+                                </div>
+                            </a>
+                            
+                            <a href="#" class="player-item">
+                                <div class="player-avatar">
+                                    <img src="assets/player-avatar3.png" alt="Oyuncu">
+                                </div>
+                                <div class="player-info">
+                                    <div class="player-name">S2G_Entry</div>
+                                    <div class="player-role">Entry Fragger</div>
+                                </div>
+                                <div class="player-stats">
+                                    <span class="stat-pill">+76</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Create Post Button -->
+        <div class="create-post-btn hidden" id="floatingCreatePostBtn">
+            <i class="fas fa-plus"></i>
+        </div>
+        
+        <!-- Footer -->
+        <footer>
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3 class="footer-title">S2G Topluluk</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="about.html">Hakkında</a></li>
+                        <li class="footer-link"><a href="#">Topluluk Kuralları</a></li>
+                        <li class="footer-link"><a href="#">Moderatörler</a></li>
+                        <li class="footer-link"><a href="#">Geri Bildirim</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3 class="footer-title">Kaynaklar</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#">Yardım Merkezi</a></li>
+                        <li class="footer-link"><a href="#">SSS</a></li>
+                        <li class="footer-link"><a href="#">Kılavuzlar</a></li>
+                        <li class="footer-link"><a href="#">API</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3 class="footer-title">Yasal</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#">Kullanım Şartları</a></li>
+                        <li class="footer-link"><a href="#">Gizlilik Politikası</a></li>
+                        <li class="footer-link"><a href="#">Çerez Politikası</a></li>
+                        <li class="footer-link"><a href="#">GDPR</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3 class="footer-title">Bize Ulaşın</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Discord">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="copyright">
+                    <p>© 2025 S2G Topluluk - S2G Esports ile resmi bağlantısı olmayan bir fan topluluğudur. Tüm oyun içeriği ve materyaller ilgili sahiplerinin tescilli markaları ve telif haklarıdır.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    <!-- Login Modal -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Giriş Yap</h3>
+                <button class="modal-close" id="closeLoginModal">×</button>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="loginEmail" class="form-label">E-posta</label>
+                        <input type="email" id="loginEmail" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword" class="form-label">Şifre</label>
+                        <input type="password" id="loginPassword" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-text">
+                            <a href="#" id="forgotPasswordLink">Şifremi unuttum</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="cancelLoginBtn">İptal</button>
+                <button class="btn btn-primary" id="submitLoginBtn">Giriş Yap</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Register Modal -->
+    <div class="modal-overlay" id="registerModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Kayıt Ol</h3>
+                <button class="modal-close" id="closeRegisterModal">×</button>
+            </div>
+            <div class="modal-body">
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="registerUsername" class="form-label">Kullanıcı Adı</label>
+                        <input type="text" id="registerUsername" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerEmail" class="form-label">E-posta</label>
+                        <input type="email" id="registerEmail" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword" class="form-label">Şifre</label>
+                        <input type="password" id="registerPassword" class="form-control" required>
+                        <div class="form-text">En az 8 karakter olmalıdır</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerConfirmPassword" class="form-label">Şifre Tekrar</label>
+                        <input type="password" id="registerConfirmPassword" class="form-control" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="cancelRegisterBtn">İptal</button>
+                <button class="btn btn-primary" id="submitRegisterBtn">Kayıt Ol</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Create Post Modal -->
+    <div class="modal-overlay" id="createPostModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Yeni Gönderi</h3>
+                <button class="modal-close" id="closeCreatePostModal">×</button>
+            </div>
+            <div class="modal-body">
+                <form id="createPostForm">
+                    <div class="form-group">
+                        <label for="postTitle" class="form-label">Başlık</label>
+                        <input type="text" id="postTitle" class="form-control" placeholder="Gönderiniz için bir başlık yazın" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="postContent" class="form-label">İçerik</label>
+                        <textarea id="postContent" class="form-control" rows="5" placeholder="Gönderinizin içeriğini yazın..." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="postImage" class="form-label">Resim Ekle (Opsiyonel)</label>
+                        <input type="file" id="postImage" class="form-control" accept="image/*">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="cancelPostBtn">İptal</button>
+                <button class="btn btn-primary" id="submitPostBtn">Gönder</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // DOM Elements
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        
+        const authButtons = document.getElementById('authButtons');
+        const loginBtn = document.getElementById('loginBtn');
+        const registerBtn = document.getElementById('registerBtn');
+        const userDropdown = document.getElementById('userDropdown');
+        const userAvatar = document.getElementById('userAvatar');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        const logoutBtn = document.getElementById('logoutBtn');
+        
+        const loginModal = document.getElementById('loginModal');
+        const closeLoginModal = document.getElementById('closeLoginModal');
+        const cancelLoginBtn = document.getElementById('cancelLoginBtn');
+        const loginForm = document.getElementById('loginForm');
+        const submitLoginBtn = document.getElementById('submitLoginBtn');
+        const forgotPasswordLink = document.getElementById('forgotPasswordLink');
+        
+        const registerModal = document.getElementById('registerModal');
+        const closeRegisterModal = document.getElementById('closeRegisterModal');
+        const cancelRegisterBtn = document.getElementById('cancelRegisterBtn');
+        const registerForm = document.getElementById('registerForm');
+        const submitRegisterBtn = document.getElementById('submitRegisterBtn');
+        
+        const createPostModal = document.getElementById('createPostModal');
+        const closeCreatePostModal = document.getElementById('closeCreatePostModal');
+        const cancelPostBtn = document.getElementById('cancelPostBtn');
+        const createPostForm = document.getElementById('createPostForm');
+        const submitPostBtn = document.getElementById('submitPostBtn');
+        
+        const createPostBtn = document.getElementById('createPostBtn');
+        const createFirstPostBtn = document.getElementById('createFirstPostBtn');
+        const floatingCreatePostBtn = document.getElementById('floatingCreatePostBtn');
+        const joinCommunityBtn = document.getElementById('joinCommunityBtn');
+        
+        const postList = document.getElementById('postList');
+        
+        // Current User
+        let currentUser = JSON.parse(localStorage.getItem('currentUser')) || null;
+        
+        // Posts Data
+        let posts = JSON.parse(localStorage.getItem('posts')) || [];
+        
+        // Initialize App
+        function initApp() {
+            // Check saved theme preference
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            html.setAttribute('data-theme', savedTheme);
+            themeToggle.innerHTML = savedTheme === 'dark' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+            
+            // Check if user is logged in
+            if (currentUser) {
+                authButtons.classList.add('hidden');
+                userDropdown.classList.remove('hidden');
+                floatingCreatePostBtn.classList.remove('hidden');
+                
+                // Set user avatar
+                userAvatar.innerHTML = `<span>${currentUser.username.charAt(0).toUpperCase()}</span>`;
+            } else {
+                authButtons.classList.remove('hidden');
+                userDropdown.classList.add('hidden');
+                floatingCreatePostBtn.classList.add('hidden');
+            }
+            
+            // Load posts
+            renderPosts();
+        }
+        
+        // Render Posts
+        function renderPosts() {
+            if (posts.length === 0) {
+                postList.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-icon">
+                            <i class="far fa-comment-dots"></i>
+                        </div>
+                        <h3 class="empty-title">Henüz gönderi yok</h3>
+                        <p class="empty-text">Topluluğun ilk gönderisini sen oluşturarak başlatabilirsin!</p>
+                        <button class="btn btn-primary" id="createFirstPostBtn">
+                            <i class="fas fa-plus"></i> Gönderi Oluştur
+                        </button>
+                    </div>
+                `;
+                
+                // Re-bind event listener for the button
+                document.getElementById('createFirstPostBtn').addEventListener('click', openCreatePostModal);
+                return;
+            }
+            
+            postList.innerHTML = '';
+            
+            posts.forEach((post, index) => {
+                const postElement = document.createElement('div');
+                postElement.className = `post-card animate-fade`;
+                postElement.style.animationDelay = `${0.1 * (index + 1)}s`;
+                
+                // Format date
+                const postDate = new Date(post.date);
+                const timeAgo = getTimeAgo(postDate);
+                
+                postElement.innerHTML = `
+                    <div class="vote-container">
+                        <button class="vote-btn"><i class="fas fa-arrow-up"></i></button>
+                        <div class="vote-count">${post.votes}</div>
+                        <button class="vote-btn"><i class="fas fa-arrow-down"></i></button>
+                    </div>
+                    
+                    <div class="post-content">
+                        <div class="post-header">
+                            <span class="community-badge">r/S2GEsports</span>
+                            <span>•</span>
+                            <span class="post-author">u/${post.author}</span>
+                            <span>•</span>
+                            <span class="post-time">${timeAgo}</span>
+                        </div>
+                        
+                        <h3 class="post-title">${post.title}</h3>
+                        
+                        ${post.image ? `
+                        <div class="post-media">
+                            <img src="${post.image}" alt="Gönderi resmi" class="post-image">
+                        </div>
+                        ` : ''}
+                        
+                        <p class="post-text">${post.content}</p>
+                        
+                        <div class="post-footer">
+                            <div class="post-action">
+                                <i class="far fa-comment"></i>
+                                <span>${post.comments} Yorum</span>
+                            </div>
+                            <div class="post-action">
+                                <i class="fas fa-share"></i>
+                                <span>Paylaş</span>
+                            </div>
+                            <div class="post-action">
+                                <i class="far fa-bookmark"></i>
+                                <span>Kaydet</span>
+                            </div>
+                            <div class="post-action">
+                                <i class="fas fa-award"></i>
+                                <span>Ödüllendir</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                postList.appendChild(postElement);
+            });
+            
+            // Add event listeners to vote buttons
+            document.querySelectorAll('.vote-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const container = this.closest('.vote-container');
+                    const countElement = container.querySelector('.vote-count');
+                    let count = parseInt(countElement.textContent);
+                    
+                    if (this.querySelector('.fa-arrow-up')) {
+                        count += 1;
+                    } else {
+                        count -= 1;
+                    }
+                    
+                    countElement.textContent = count;
+                });
+            });
+        }
+        
+        // Get time ago string
+        function getTimeAgo(date) {
+            const now = new Date();
+            const diff = now - date;
+            
+            const seconds = Math.floor(diff / 1000);
+            const minutes = Math.floor(seconds / 60);
+            const hours = Math.floor(minutes / 60);
+            const days = Math.floor(hours / 24);
+            
+            if (days > 0) {
+                return `${days} gün önce`;
+            } else if (hours > 0) {
+                return `${hours} saat önce`;
+            } else if (minutes > 0) {
+                return `${minutes} dakika önce`;
+            } else {
+                return `${seconds} saniye önce`;
+            }
+        }
+        
+        // Theme Toggle
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            html.setAttribute('data-theme', newTheme);
+            themeToggle.innerHTML = newTheme === 'dark' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+            
+            // Save preference to localStorage
+            localStorage.setItem('theme', newTheme);
+        });
+        
+        // User Dropdown
+        userAvatar.addEventListener('click', () => {
+            dropdownMenu.classList.toggle('active');
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!userDropdown.contains(e.target)) {
+                dropdownMenu.classList.remove('active');
+            }
+        });
+        
+        // Logout
+        logoutBtn.addEventListener('click', () => {
+            currentUser = null;
+            localStorage.removeItem('currentUser');
+            initApp();
+            dropdownMenu.classList.remove('active');
+        });
+        
+        // Open Login Modal
+        loginBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginModal.classList.add('active');
+        });
+        
+        // Open Register Modal
+        registerBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            registerModal.classList.add('active');
+        });
+        
+        // Close Modals
+        function closeAllModals() {
+            loginModal.classList.remove('active');
+            registerModal.classList.remove('active');
+            createPostModal.classList.remove('active');
+        }
+        
+        closeLoginModal.addEventListener('click', closeAllModals);
+        cancelLoginBtn.addEventListener('click', closeAllModals);
+        closeRegisterModal.addEventListener('click', closeAllModals);
+        cancelRegisterBtn.addEventListener('click', closeAllModals);
+        closeCreatePostModal.addEventListener('click', closeAllModals);
+        cancelPostBtn.addEventListener('click', closeAllModals);
+        
+        // Forgot Password
+        forgotPasswordLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('Şifre sıfırlama bağlantısı e-posta adresinize gönderilecektir.');
+            closeAllModals();
+        });
+        
+        // Login Form Submission
+        submitLoginBtn.addEventListener('click', () => {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            // Simple validation
+            if (!email || !password) {
+                alert('Lütfen tüm alanları doldurun.');
+                return;
+            }
+            
+            // In a real app, this would be an API call
+            currentUser = {
+                username: email.split('@')[0],
+                email: email
+            };
+            
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            closeAllModals();
+            initApp();
+        });
+        
+        // Register Form Submission
+        submitRegisterBtn.addEventListener('click', () => {
+            const username = document.getElementById('registerUsername').value;
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('registerConfirmPassword').value;
+            
+            // Simple validation
+            if (!username || !email || !password || !confirmPassword) {
+                alert('Lütfen tüm alanları doldurun.');
+                return;
+            }
+            
+            if (password !== confirmPassword) {
+                alert('Şifreler eşleşmiyor.');
+                return;
+            }
+            
+            if (password.length < 8) {
+                alert('Şifre en az 8 karakter olmalıdır.');
+                return;
+            }
+            
+            // In a real app, this would be an API call
+            currentUser = {
+                username: username,
+                email: email
+            };
+            
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            closeAllModals();
+            initApp();
+        });
+        
+        // Open Create Post Modal
+        function openCreatePostModal() {
+            if (!currentUser) {
+                loginModal.classList.add('active');
+                return;
+            }
+            
+            createPostModal.classList.add('active');
+        }
+        
+        createPostBtn.addEventListener('click', openCreatePostModal);
+        createFirstPostBtn?.addEventListener('click', openCreatePostModal);
+        floatingCreatePostBtn.addEventListener('click', openCreatePostModal);
+        
+        // Create Post Form Submission
+        submitPostBtn.addEventListener('click', () => {
+            const title = document.getElementById('postTitle').value;
+            const content = document.getElementById('postContent').value;
+            const imageInput = document.getElementById('postImage');
+            
+            if (!title || !content) {
+                alert('Lütfen başlık ve içerik girin.');
+                return;
+            }
+            
+            // Create new post
+            const newPost = {
+                id: Date.now(),
+                title: title,
+                content: content,
+                author: currentUser.username,
+                date: new Date().toISOString(),
+                votes: 0,
+                comments: 0,
+                image: imageInput.files.length > 0 ? URL.createObjectURL(imageInput.files[0]) : null
+            };
+            
+            // Add to posts array
+            posts.unshift(newPost);
+            localStorage.setItem('posts', JSON.stringify(posts));
+            
+            // Reset form
+            createPostForm.reset();
+            closeAllModals();
+            
+            // Re-render posts
+            renderPosts();
+        });
+        
+        // Join Community
+        joinCommunityBtn.addEventListener('click', () => {
+            if (!currentUser) {
+                loginModal.classList.add('active');
+                return;
+            }
+            
+            alert('Topluluğa başarıyla katıldınız!');
+        });
+        
+        // Initialize the app
+        initApp();
+    </script>
+</body>
+</html>
